@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and local tooling
+.idea/
+.vscode/
+.mcp.json
+
+# Logs and reports
+*.log
+npm-debug.log*
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local notes and documentation extracts
+docs/

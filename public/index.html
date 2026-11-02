@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Click to Pay demo</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">Click to Pay demo</a>
+    <nav><a href="/">Shop</a> <a href="/orders.html">Records</a></nav>
+  </header>
+
+  <div class="notice">Demo environment: the Click to Pay checkout runs in sandbox mode and no payment is processed.</div>
+
+  <main class="layout">
+    <section aria-labelledby="catalog-title">
+      <h1 id="catalog-title">Products</h1>
+      <div id="catalog" class="catalog" aria-live="polite"><p class="muted">Loading…</p></div>
+    </section>
+
+    <aside class="panel" aria-labelledby="cart-title">
+      <h2 id="cart-title">Cart</h2>
+      <div id="cart"><p class="muted">Your cart is empty.</p></div>
+      <p id="cart-error" class="error" hidden></p>
+
+      <div id="pending-record" class="warning" hidden>
+        <p>A previous Click to Pay checkout has not been recorded yet.</p>
+        <button type="button" id="pending-retry">Retry recording</button>
+      </div>
+
+      <section id="checkout" class="checkout" hidden>
+        <h2>Payment</h2>
+        <p class="muted small">Card payment with Click to Pay (Mastercard).</p>
+        <button type="button" id="ctp-start" class="primary">Pay with Click to Pay</button>
+        <button type="button" id="ctp-cancel" hidden>Cancel and return to cart</button>
+        <p id="ctp-status" class="muted" aria-live="polite"></p>
+        <p class="muted small" id="ctp-config"></p>
+      </section>
+    </aside>
+  </main>
+
+  <section class="ctp-host-wrap">
+    <div id="ctp-container" class="ctp-container"></div>
+
+    <div id="manual-entry-toggle-wrap" hidden>
+      <div class="separator"><span>or</span></div>
+      <button type="button" id="manual-entry-toggle">Enter card manually</button>
+    </div>
+
+    <form id="manual-entry" class="manual-entry" hidden novalidate>
+      <h3>Enter card manually</h3>
+      <p class="muted small">Card details are passed only to the Click to Pay SDK and are never sent to the shop server.</p>
+      <div class="grid">
+        <label class="span-2">Card number
+          <input name="pan" inputmode="numeric" autocomplete="cc-number" required>
+        </label>
+        <label>Expiry month (MM)
+          <input name="expMonth" inputmode="numeric" maxlength="2" autocomplete="cc-exp-month" required>
+        </label>
+        <label>Expiry year (YY)
+          <input name="expYear" inputmode="numeric" maxlength="2" autocomplete="cc-exp-year" required>
+        </label>
+        <label>CVC
+          <input name="cvc" inputmode="numeric" maxlength="4" autocomplete="cc-csc" required>
+        </label>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" name="enroll" checked>
+        Save my information with Mastercard Click to Pay for fast, secure checkout
+      </label>
+
+      <fieldset id="profile-fields">
+        <legend>Click to Pay profile</legend>
+        <div class="grid">
+          <label class="span-2">Email
+            <input type="email" name="email" autocomplete="email">
+          </label>
+          <label>First name
+            <input name="firstName" autocomplete="given-name">
+          </label>
+          <label>Last name
+            <input name="lastName" autocomplete="family-name">
+          </label>
+          <label>Country calling code
+            <input name="phoneCountryCode" inputmode="numeric" value="381" maxlength="4">
+          </label>
+          <label>Mobile number
+            <input name="phoneNumber" inputmode="numeric" autocomplete="tel-national">
+          </label>
+        </div>
+        <label class="check">
+          <input type="checkbox" name="rememberMe">
+          Remember me in this browser
+        </label>
+      </fieldset>
+
+      <p id="manual-entry-error" class="error" hidden></p>
+      <button type="submit" class="primary">Pay</button>
+    </form>
+
+    <p id="ctp-error" class="error" hidden></p>
+  </section>
+
+  <section id="result" class="result" hidden aria-labelledby="result-title">
+    <h2 id="result-title">Click to Pay checkout completed successfully</h2>
+    <p class="muted">The SDK output is shown only on this page and is not stored. In a full integration it would be passed to the payment service provider for further processing, which this demo does not do.</p>
+    <dl class="meta">
+      <dt>Flow</dt><dd id="result-flow"></dd>
+      <dt>Card scheme</dt><dd id="result-brand"></dd>
+      <dt>Field</dt><dd id="result-label"></dd>
+      <dt>Completed</dt><dd id="result-time"></dd>
+    </dl>
+    <pre id="result-output" class="output"></pre>
+    <button type="button" id="result-copy">Copy output</button>
+    <details id="result-decoded-wrap" hidden>
+      <summary>Decoded JWS header and payload (signature not verified)</summary>
+      <pre id="result-decoded" class="output"></pre>
+    </details>
+    <div id="record-status" class="record"></div>
+  </section>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>

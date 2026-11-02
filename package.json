@@ -1,0 +1,20 @@
+{
+  "name": "click-to-pay-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Click to Pay (Netcetera SRCi) demo application for a bachelor thesis",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@netceterapx/click-to-pay-sdk": "5.0.0",
+    "dotenv": "^18.0.9",
+    "express": "^4.22.3"
+  }
+}

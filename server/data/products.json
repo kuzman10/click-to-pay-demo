@@ -1,0 +1,34 @@
+[
+  {
+    "id": "product_001",
+    "name": "Wireless headphones",
+    "description": "Noise-cancelling wireless headphones.",
+    "imageUrl": "/images/headphones.svg",
+    "unitPrice": 4990,
+    "currency": "EUR"
+  },
+  {
+    "id": "product_002",
+    "name": "Mechanical keyboard",
+    "description": "Backlit mechanical keyboard.",
+    "imageUrl": "/images/keyboard.svg",
+    "unitPrice": 7990,
+    "currency": "EUR"
+  },
+  {
+    "id": "product_003",
+    "name": "Wireless mouse",
+    "description": "Ergonomic wireless mouse.",
+    "imageUrl": "/images/mouse.svg",
+    "unitPrice": 2490,
+    "currency": "EUR"
+  },
+  {
+    "id": "product_004",
+    "name": "USB-C hub",
+    "description": "Hub with HDMI, USB-A and a card reader.",
+    "imageUrl": "/images/hub.svg",
+    "unitPrice": 3490,
+    "currency": "EUR"
+  }
+]
